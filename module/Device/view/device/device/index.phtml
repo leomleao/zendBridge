@@ -1,0 +1,28 @@
+<?php
+// module/Device/view/device/device/index.phtml:
+
+$title = 'My devices';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<p>
+    <a href="<?= $this->url('album', ['action' => 'add']) ?>">Add new device</a>
+</p>
+
+<table class="table">
+<tr>
+    <th>Title</th>
+    <th>Artist</th>
+    <th>&nbsp;</th>
+</tr>
+<?php foreach ($devices as $device) : ?>
+    <tr>
+        <td><?= $this->escapeHtml($device->title) ?></td>
+        <td><?= $this->escapeHtml($device->artist) ?></td>
+        <td>
+            <a href="<?= $this->url('device', ['action' => 'edit', 'id' => $device->id]) ?>">Edit</a>
+            <a href="<?= $this->url('device', ['action' => 'delete', 'id' => $device->id]) ?>">Delete</a>
+        </td>
+    </tr>
+<?php endforeach; ?>
+</table>
